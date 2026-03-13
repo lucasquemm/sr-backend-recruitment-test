@@ -27,12 +27,14 @@ A customer has requested a very simple `enterprises` management system. Your rol
 - Changing the scope of the project too much.
 
 ### What we would like to see
+- Unit tests;
+- Audit logs.
 
-- Unit and E2E tests;
+### What would be nice to see (if you have enough time)
+- The application deployed on AWS (preferred) or any other cloud service;
 - Using asynchronous jobs and/or queues to handle stuff;
 - Integration with external APIs;
-- Audit logs;
-- The application deployed on AWS (preferred) or any other cloud service.
+- E2E tests.
 
 > Please keep in mind that we’re not evaluating whether you can build up an application with a million complex features. Do what you can within your available time. However, remember that the more things you can show, the more points your test will potentially earn.
 
