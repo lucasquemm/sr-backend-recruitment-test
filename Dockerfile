@@ -15,6 +15,8 @@ RUN mkdir /code
 
 COPY entrypoint.sh .
 
+COPY assets/enterprises.sql /docker-entrypoint-initdb.d/
+
 RUN ["chmod", "+x", "/entrypoint.sh"]
 
 WORKDIR /code

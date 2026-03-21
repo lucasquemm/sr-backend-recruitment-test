@@ -8,6 +8,7 @@ defmodule RecruitmentTest.Enterprises.Enterprise do
     field :commercial_name, :string
     field :cnpj, :string
     field :description, :string
+    belongs_to :owner, RecruitmentTest.Owners.Owner
 
     timestamps()
   end
