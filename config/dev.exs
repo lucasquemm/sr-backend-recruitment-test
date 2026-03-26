@@ -2,8 +2,8 @@ import Config
 
 # Configure your database
 config :recruitment_test, RecruitmentTest.Repo,
-  username: System.get_env("DATABASE_USER") || "db_user",
-  password: System.get_env("DATABASE_PASSWORD") || "db_password",
+  username: System.get_env("DATABASE_USER") || "postgres",
+  password: System.get_env("DATABASE_PASSWORD") || "postgres",
   database: System.get_env("DATABASE_DB") || "recruitment_test_dev",
   hostname: System.get_env("DATABASE_HOST") || "localhost",
   stacktrace: true,
