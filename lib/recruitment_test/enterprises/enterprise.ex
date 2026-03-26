@@ -8,7 +8,10 @@ defmodule RecruitmentTest.Enterprises.Enterprise do
     field :commercial_name, :string
     field :cnpj, :string
     field :description, :string
-    belongs_to :owner, RecruitmentTest.Owners.Owner
+
+    belongs_to :owner, RecruitmentTest.Owners.Owner,
+      foreign_key: :owner_id,
+      type: :binary_id
 
     timestamps()
   end
@@ -20,12 +23,15 @@ defmodule RecruitmentTest.Enterprises.Enterprise do
       :name,
       :commercial_name,
       :cnpj,
-      :description
+      :description,
+      :owner_id
     ])
     |> handle_name()
     |> handle_commercial_name()
     |> handle_cnpj()
     |> handle_description()
+    |> validate_required([:owner_id])
+    |> assoc_constraint(:owner)
   end
 
   defp handle_name(changeset) do
