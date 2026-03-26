@@ -1,21 +1,22 @@
 defmodule RecruitmentTest.Owners.Owner do
-    use RecruitmentTest.Schema
+  use RecruitmentTest.Schema
 
-    import Ecto.Changeset
+  import Ecto.Changeset
 
-    schema "owners" do
-      field :name, :string
-      field :email, :string
-      field :cpf, :string
-      has_many :enterprises, RecruitmentTest.Enterprises.Enterprise
-      timestamps()
-    end
+  schema "owners" do
+    field :name, :string
+    field :email, :string
+    field :cpf, :string
+    has_many :enterprises, RecruitmentTest.Enterprises.Enterprise
+    timestamps()
+  end
 
-     def changeset(enterprise, attrs) do
-    enterprise
+  def changeset(owner, attrs) do
+    owner
     |> cast(attrs, [
       :name,
-      :cpf,
+      :email,
+      :cpf
     ])
     |> handle_name()
     |> handle_cpf()
@@ -27,8 +28,6 @@ defmodule RecruitmentTest.Owners.Owner do
     |> validate_length(:name, max: 250)
   end
 
-
-
   defp handle_cpf(changeset) do
     changeset
     |> validate_required(:cpf)
@@ -37,10 +36,7 @@ defmodule RecruitmentTest.Owners.Owner do
     |> unique_constraint(:cpf)
   end
 
-
   defp numbers_only(value) do
     String.replace(value, ~r/[^\d]/, "")
   end
-
-
 end
