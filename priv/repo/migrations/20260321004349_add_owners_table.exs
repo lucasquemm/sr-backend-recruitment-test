@@ -2,13 +2,15 @@ defmodule RecruitmentTest.Repo.Migrations.AddOwnersTable do
   use Ecto.Migration
 
   def change do
-      create table("owners") do
-        add :name, :string, null: false
-        add :email, :string, null: false
-        add :cpf, :string, null: false
+    create table("owners", primary_key: false) do
+      add :id, :binary_id, primary_key: true
+      add :name, :string
+      add :email, :string
+      add :cpf, :string
 
+      timestamps()
+    end
 
-        timestamps()
-      end
+    create unique_index(:owners, [:cpf])
   end
 end
